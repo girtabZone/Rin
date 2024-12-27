@@ -46,7 +46,7 @@ function Footer() {
                 {footerHtml && <div dangerouslySetInnerHTML={{ __html: footerHtml }} />}
                 <p className='text-sm text-neutral-500 font-normal link-line'>
                     <span>
-                        © 2024 Powered by <a className='hover:underline' href="https://github.com/openRin/Rin" target="_blank">Rin</a>
+                        © 苏美尔ICP备-42020001号
                     </span>
                     {config.get<boolean>('rss') && <>
                         <Spliter />
