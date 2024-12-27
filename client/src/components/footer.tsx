@@ -46,7 +46,7 @@ function Footer() {
                 {footerHtml && <div dangerouslySetInnerHTML={{ __html: footerHtml }} />}
                 <p className='text-sm text-neutral-500 font-normal link-line'>
                     <span>
-                        © 苏美尔ICP备-42020001号
+                        © ICP-42020001
                     </span>
                     {config.get<boolean>('rss') && <>
                         <Spliter />
