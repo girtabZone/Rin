@@ -21,7 +21,6 @@ function Footer() {
         setModeState(mode);
         localStorage.setItem('theme', mode);
 
-
         if (mode !== 'system' || (!('theme' in localStorage) && window.matchMedia(`(prefers-color-scheme: ${mode})`).matches)) {
             document.documentElement.setAttribute('data-color-mode', mode);
         } else {
@@ -44,40 +43,31 @@ function Footer() {
             </Helmet>
             <div className="flex flex-col mb-8 space-y-2 justify-center items-center t-primary ani-show">
                 {footerHtml && <div dangerouslySetInnerHTML={{ __html: footerHtml }} />}
-                <p className='text-sm text-neutral-500 font-normal link-line'>
-                    <span>
-                        © ICP-42020001
-                    </span>
-                    {config.get<boolean>('rss') && <>
-                        <Spliter />
+                {config.get<boolean>('rss') && 
+                    <p className='text-sm text-neutral-500 font-normal link-line'>
                         <Popup trigger={
                             <button className="hover:underline" type="button">
                                 RSS
                             </button>
                         }
-                            position="top center"
-                            arrow={false}
-                            closeOnDocumentClick>
+                        position="top center"
+                        arrow={false}
+                        closeOnDocumentClick>
                             <div className="border-card">
                                 <p className='font-bold t-primary'>
                                     {t('footer.rss')}
                                 </p>
                                 <p>
-                                    <a href='/sub/rss.xml'>
-                                        RSS
-                                    </a> <Spliter />
-                                    <a href='/sub/atom.xml'>
-                                        Atom
-                                    </a> <Spliter />
-                                    <a href='/sub/rss.json'>
-                                        JSON
-                                    </a>
+                                    <a href='/sub/rss.xml'>RSS</a>
+                                    <Spliter />
+                                    <a href='/sub/atom.xml'>Atom</a>
+                                    <Spliter />
+                                    <a href='/sub/rss.json'>JSON</a>
                                 </p>
-
                             </div>
                         </Popup>
-                    </>}
-                </p>
+                    </p>
+                }
                 <div className="w-fit-content inline-flex rounded-full border border-zinc-200 p-[3px] dark:border-zinc-700">
                     <ThemeButton mode='light' current={modeState} label="Toggle light mode" icon="ri-sun-line" onClick={setMode} />
                     <ThemeButton mode='system' current={modeState} label="Toggle system mode" icon="ri-computer-line" onClick={setMode} />
