@@ -13,16 +13,10 @@ import { ConfigService } from './services/config';
 
 export const app = () => new Elysia({ aot: false })
     .use(cors({
-        aot: false,
-        origin: '*',
-        methods: '*',
-        allowedHeaders: [
-            'authorization',
-            'content-type'
-        ],
-        maxAge: 600,
+        origin: ["https://blog.girtab.xyz"],
         credentials: true,
-        preflight: true
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"]
     }))
     .use(serverTiming({
         enabled: true,
