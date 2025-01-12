@@ -13,17 +13,11 @@ import { ConfigService } from './services/config';
 
 export const app = () => new Elysia({ aot: false })
     .use(cors({
-        origin: (request) => {
-            const origin = request.headers.get('origin');
-            if (origin && origin.includes('girtab.xyz')) {
-                return origin;
-            }
-            return 'https://blog.girtab.xyz';
-        },
+        origin: '*',
         credentials: true,
-        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-        allowedHeaders: ['*'],
-        exposedHeaders: ['*'],
+        methods: '*',
+        allowedHeaders: '*',
+        exposedHeaders: '*',
         maxAge: 86400,
         preflight: true
     }))
